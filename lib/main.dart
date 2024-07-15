@@ -9,14 +9,17 @@ import 'package:flashchat/screens/chat_screen.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: const FirebaseOptions(
-        apiKey: "AIzaSyDFC-SkBTnpxsfoTDwTCR4nTWexd_m7QMg",
-        authDomain: "flashchat-a671f.firebaseapp.com",
-        projectId: "flashchat-a671f",
-        storageBucket: "flashchat-a671f.appspot.com",
-        messagingSenderId: "148289801259",
-        appId: "1:148289801259:web:fbdca7ef670ca71952ee6e",
-        measurementId: "G-BJHZEXNPEE"),
+    // options: const FirebaseOptions(
+
+    
+    //     // apiKey: "AIzaSyDFC-SkBTnpxsfoTDwTCR4nTWexd_m7QMg",
+    //     // authDomain: "flashchat-a671f.firebaseapp.com",
+    //     // projectId: "flashchat-a671f",
+    //     // storageBucket: "flashchat-a671f.appspot.com",
+    //     // messagingSenderId: "148289801259",
+    //     // appId: "1:148289801259:web:fbdca7ef670ca71952ee6e",
+    //     // measurementId: "G-BJHZEXNPEE"
+    // )
   );
   runApp(const FlashChat());
 }
