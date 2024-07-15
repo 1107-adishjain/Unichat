@@ -7,6 +7,7 @@ import 'package:flashchat/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class LoginScreen extends StatefulWidget {
   static String id = "login_screen";
@@ -18,10 +19,18 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  late String loginemail;
-  late String logpsswrd;
+  String loginemail = "";
+  String logpsswrd = "";
   bool showspinner = false;
-  late User user;
+
+  void showAlertDialog(BuildContext context, String title, String message) {
+    Alert(
+      context: context,
+      title: title,
+      desc: message,
+    ).show();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,40 +80,85 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 24.0,
               ),
               LogAndReg(
-                  onpress: () async {
-                    setState(() {
-                      showspinner = true;
-                    });
-                    try {
-                      final loginn = await FirebaseAuth.instance
-                          .signInWithEmailAndPassword(
-                              email: loginemail, password: logpsswrd);
+                onpress: () async {
+                  setState(() {
+                    showspinner = true;
+                  });
 
-                      if (loginn.user != null) {
-                        Navigator.pushNamed(context, ChatScreen.id);
-                      } else {}
+                  try {
+                    final loginn =
+                        await FirebaseAuth.instance.signInWithEmailAndPassword(
+                      email: loginemail,
+                      password: logpsswrd,
+                    );
+                    
+                    if (loginn.user != null) {
+                      // ignore: use_build_context_synchronously
+                      Navigator.pushNamed(context, ChatScreen.id);
+                    }
+                    else  if (loginemail.isEmpty || logpsswrd.isEmpty) {
+                      // ignore: use_build_context_synchronously
+                      showAlertDialog(context, "Error",
+                          "Please enter both email and password.");
+                      return;
+                    }
+                  }
+                  on FirebaseAuthException catch (e) {
+                    String errorMessage;
+
+                    switch (e.code) {
+                      case 'invalid-email':
+                        errorMessage = "The email address is not valid.";
+                        break;
+                      case 'user-disabled':
+                        errorMessage = "This user has been disabled.";
+                        break;
+                      case 'user-not-found':
+                        errorMessage = "No user found for this email.";
+                        break;
+                      case 'wrong-password':
+                        errorMessage = "Wrong password entered.";
+                        break;
+                      default:
+                        errorMessage = "An unknown error occurred.";
+                    }
+
+                    showAlertDialog(context, "Error", errorMessage);
+                  } catch (e) {
+                    showAlertDialog(context, "Error", e.toString());
+                  }
+
+                  setState(() {
+                    showspinner = false;
+                  });
+                },
+                label: "Log In",
+                colors: Colors.lightBlueAccent,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Don't have an Account?",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      setState(() {
+                        showspinner = true;
+                      });
+                      Navigator.pushNamed(context, RegistrationScreen.id);
                       setState(() {
                         showspinner = false;
                       });
-                    } catch (e) {
-                      print(e);
-                    }
-                  },
-                  label: "Log In",
-                  colors: Colors.lightBlueAccent),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("Don't have an Account?",style: TextStyle(color: Colors.black),),
-                      TextButton(onPressed: (){
-                        setState(() {
-                          Navigator.pushNamed(context,RegistrationScreen.id);
-                        });
-                      }, 
-                      child:const Text("Register",style: TextStyle(color: Colors.lightBlueAccent),),
-                      )
-                    ],
+                    },
+                    child: const Text(
+                      "Register",
+                      style: TextStyle(color: Colors.lightBlueAccent),
+                    ),
                   )
+                ],
+              ),
             ],
           ),
         ),
