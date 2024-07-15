@@ -87,6 +87,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   },
                   label: "Register",
                   colors: Colors.blueAccent),
+                  
             ],
           ),
         ),

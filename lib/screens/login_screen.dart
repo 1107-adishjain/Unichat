@@ -2,6 +2,7 @@
 import 'package:flashchat/components/log_and_reg_button.dart';
 import 'package:flashchat/constants.dart';
 import 'package:flashchat/screens/chat_screen.dart';
+import 'package:flashchat/screens/registration_screen.dart';
 // import 'package:flashchat/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -90,7 +91,20 @@ class _LoginScreenState extends State<LoginScreen> {
                     }
                   },
                   label: "Log In",
-                  colors: Colors.lightBlueAccent)
+                  colors: Colors.lightBlueAccent),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text("Don't have an Account?",style: TextStyle(color: Colors.black),),
+                      TextButton(onPressed: (){
+                        setState(() {
+                          Navigator.pushNamed(context,RegistrationScreen.id);
+                        });
+                      }, 
+                      child:const Text("Register",style: TextStyle(color: Colors.lightBlueAccent),),
+                      )
+                    ],
+                  )
             ],
           ),
         ),

@@ -1,3 +1,4 @@
+import 'package:flashchat/constants.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -22,7 +23,7 @@ class _LogAndRegState extends State<LogAndReg> {
       child: Material(
         elevation: 5.0,
         color: widget.colors,
-        borderRadius: BorderRadius.circular(30.0),
+        borderRadius:kborderradiusoflogandreg,
         child: MaterialButton(
           onPressed: widget.onpress,
           minWidth: 200.0,

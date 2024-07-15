@@ -18,33 +18,29 @@ const kMessageContainerDecoration = BoxDecoration(
   ),
 );
 
-
 const kflashchatsyle =
     TextStyle(fontSize: 45.0, fontWeight: FontWeight.w900, color: Colors.black);
-
 
 const ktextfeilddecoration = InputDecoration(
   hintText: 'Enter your email',
   hintStyle: TextStyle(color: Colors.black54),
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
   border: OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+    borderRadius: kborderradiusoflogandreg,
   ),
   enabledBorder: OutlineInputBorder(
     borderSide: BorderSide(color: Colors.blueAccent, width: 1.0),
-    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+    borderRadius: kborderradiusoflogandreg,
   ),
   focusedBorder: OutlineInputBorder(
     borderSide: BorderSide(color: Colors.blueAccent, width: 2.0),
-    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+    borderRadius: kborderradiusoflogandreg,
   ),
 );
 
-
-
-
-
-
-
-
-
+const kborderradiusoflogandreg = BorderRadius.only(
+  topLeft: Radius.circular(8.0),
+  topRight: Radius.circular(8.0),
+  bottomLeft: Radius.circular(8.0),
+  bottomRight: Radius.circular(8.0),
+);
