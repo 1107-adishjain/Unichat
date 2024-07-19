@@ -1,12 +1,12 @@
 buildscript {
-    ext.kotlin_version = '1.7.1'
+    ext.kotlin_version = '2.0.0'
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:7.2.1" // Use appropriate Gradle version
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10" // Use appropriate Kotlin version
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // Use appropriate Kotlin version
         classpath 'com.google.gms:google-services:4.4.2' // Add Google services Gradle plugin
     }
 }
