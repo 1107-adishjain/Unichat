@@ -123,8 +123,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         errorMessage = "An unknown error occurred.";
                     }
 
+                    // ignore: use_build_context_synchronously
                     showAlertDialog(context, "Error", errorMessage);
                   } catch (e) {
+                    // ignore: use_build_context_synchronously
                     showAlertDialog(context, "Error", e.toString());
                   }
 

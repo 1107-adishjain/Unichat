@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "430740862595",
-    "project_id": "flashchat-android-b1202",
-    "storage_bucket": "flashchat-android-b1202.appspot.com"
+    "project_number": "32553696651",
+    "project_id": "flaschat-1f68f",
+    "storage_bucket": "flaschat-1f68f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:430740862595:android:06299b0396e900c6bdcdb6",
+        "mobilesdk_app_id": "1:32553696651:android:6262b47751064e957ac38e",
         "android_client_info": {
           "package_name": "com.example.flashchat"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCY5RmE8XuI9S3-vMzRGWwxjTioQXLahcs"
+          "current_key": "AIzaSyBuYlnpyu3poo-SD3lmvc5yLgpZGYWCFWA"
         }
       ],
       "services": {

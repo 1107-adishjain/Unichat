@@ -78,6 +78,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         .createUserWithEmailAndPassword(
                             email: email, password: password);
                     if (cred.user != null) {
+                      // ignore: use_build_context_synchronously
                       Navigator.pushNamed(context, LoginScreen.id);
                     }
 
